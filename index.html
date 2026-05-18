@@ -96,13 +96,8 @@
   .hero-card{background:#fff;border-radius:32px;padding:14px;
     box-shadow:0 30px 60px -28px rgba(58,58,64,.4);position:relative;
     z-index:2;}
-  .hero-card .ph{border-radius:22px;height:380px;
-    background:
-      radial-gradient(circle at 30% 30%, #ffd9a8 0%, transparent 55%),
-      radial-gradient(circle at 75% 70%, #ffc2c7 0%, transparent 55%),
-      linear-gradient(135deg,#fff0db,#ffe4e6);
-    display:flex;align-items:center;justify-content:center;
-    font-size:120px;}
+  .hero-card .ph{border-radius:22px;height:380px;width:100%;
+    display:block;object-fit:cover;}
   .hero-badge{position:absolute;background:#fff;border-radius:18px;
     padding:14px 18px;box-shadow:0 16px 30px -14px rgba(58,58,64,.45);
     display:flex;align-items:center;gap:10px;z-index:3;}
@@ -172,8 +167,9 @@
       radial-gradient(circle at 25% 25%, #ffd9a8 0%, transparent 50%),
       radial-gradient(circle at 80% 75%, #b9e0e4 0%, transparent 55%),
       linear-gradient(135deg,#fff0db,#fde4e6);
-    display:flex;align-items:center;justify-content:center;font-size:120px;
-    box-shadow:0 30px 60px -30px rgba(58,58,64,.4);}
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px -30px rgba(58,58,64,.4);overflow:hidden;}
+  .split-art svg{width:78%;height:auto;}
   .checklist{margin-top:26px;display:flex;flex-direction:column;gap:16px;}
   .checklist .ci{display:flex;gap:14px;align-items:flex-start;}
   .checklist .ci .tick{width:30px;height:30px;border-radius:50%;
@@ -185,8 +181,13 @@
   /* ---------- gallery ---------- */
   .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);
     grid-auto-rows:160px;gap:16px;margin-top:48px;}
-  .gal{border-radius:20px;display:flex;align-items:center;
-    justify-content:center;font-size:54px;overflow:hidden;}
+  .gal{border-radius:20px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:6px;overflow:hidden;
+    position:relative;transition:transform .2s;}
+  .gal:hover{transform:scale(1.03);}
+  .gal-em{font-size:48px;line-height:1;}
+  .gal-cap{font-family:var(--display);font-weight:700;font-size:14px;
+    color:var(--charcoal);opacity:.85;}
   .gal:nth-child(1){grid-row:span 2;background:linear-gradient(135deg,#ffe0b3,#ffc98a);}
   .gal:nth-child(2){background:linear-gradient(135deg,#ffc9cd,#ff9ba3);}
   .gal:nth-child(3){background:linear-gradient(135deg,#b9e0e4,#8fcfd6);}
@@ -323,7 +324,65 @@
     </div>
     <div class="hero-art reveal">
       <div class="hero-card">
-        <div class="ph">🧸</div>
+        <svg class="ph" viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Children playing and learning">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff3da"/><stop offset="1" stop-color="#ffe6e8"/>
+            </linearGradient>
+            <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#bfe3a8"/><stop offset="1" stop-color="#9ed089"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="380" fill="url(#sky)"/>
+          <!-- sun -->
+          <circle cx="338" cy="74" r="34" fill="#f6c244"/>
+          <g stroke="#f6c244" stroke-width="6" stroke-linecap="round">
+            <line x1="338" y1="14" x2="338" y2="2"/>
+            <line x1="386" y1="32" x2="396" y2="24"/>
+            <line x1="398" y1="74" x2="412" y2="74"/>
+            <line x1="290" y1="32" x2="280" y2="24"/>
+          </g>
+          <!-- clouds -->
+          <g fill="#ffffff" opacity=".9">
+            <ellipse cx="84" cy="58" rx="40" ry="22"/>
+            <ellipse cx="116" cy="62" rx="30" ry="18"/>
+          </g>
+          <!-- ground -->
+          <path d="M0 300 Q210 270 420 300 L420 380 L0 380 Z" fill="url(#grass)"/>
+          <!-- tree -->
+          <rect x="50" y="222" width="16" height="86" rx="7" fill="#b07a45"/>
+          <circle cx="58" cy="206" r="40" fill="#7cc36a"/>
+          <circle cx="34" cy="222" r="28" fill="#8ed07b"/>
+          <circle cx="84" cy="224" r="26" fill="#8ed07b"/>
+          <!-- balloon -->
+          <line x1="300" y1="180" x2="300" y2="300" stroke="#cbb89a" stroke-width="2"/>
+          <ellipse cx="300" cy="158" rx="30" ry="36" fill="#e63946"/>
+          <path d="M294 192 l6 10 l6 -10 z" fill="#e63946"/>
+          <!-- child 1 (red) -->
+          <g>
+            <ellipse cx="150" cy="304" rx="26" ry="8" fill="#000" opacity=".08"/>
+            <rect x="132" y="244" width="36" height="52" rx="16" fill="#e63946"/>
+            <circle cx="150" cy="224" r="22" fill="#f4c89a"/>
+            <path d="M128 218 a22 22 0 0 1 44 0 q-22 -14 -44 0z" fill="#3a3a40"/>
+            <circle cx="143" cy="224" r="3" fill="#3a3a40"/>
+            <circle cx="157" cy="224" r="3" fill="#3a3a40"/>
+            <path d="M144 232 q6 6 12 0" stroke="#3a3a40" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- child 2 (orange) -->
+          <g>
+            <ellipse cx="224" cy="306" rx="28" ry="8" fill="#000" opacity=".08"/>
+            <rect x="204" y="250" width="40" height="56" rx="18" fill="#f08a2b"/>
+            <circle cx="224" cy="228" r="24" fill="#e8b389"/>
+            <path d="M200 226 a24 24 0 0 1 48 0 q-24 -18 -48 0z" fill="#23232a"/>
+            <circle cx="216" cy="228" r="3.2" fill="#3a3a40"/>
+            <circle cx="232" cy="228" r="3.2" fill="#3a3a40"/>
+            <path d="M217 236 q7 7 14 0" stroke="#3a3a40" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- building blocks -->
+          <rect x="288" y="276" width="26" height="26" rx="4" fill="#4eb1ba"/>
+          <rect x="296" y="250" width="26" height="26" rx="4" fill="#f6c244"/>
+          <rect x="316" y="276" width="26" height="26" rx="4" fill="#e63946"/>
+        </svg>
       </div>
       <div class="hero-badge hb-1">
         <span class="em">🎨</span>
@@ -413,7 +472,25 @@
 <!-- WHY / SPLIT -->
 <section class="sec split" id="why">
   <div class="wrap">
-    <div class="split-art reveal">🌈</div>
+    <div class="split-art reveal">
+      <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A happy, safe school">
+        <circle cx="190" cy="190" r="150" fill="#ffffff" opacity=".55"/>
+        <!-- rainbow -->
+        <g fill="none" stroke-width="14" stroke-linecap="round">
+          <path d="M70 240 a120 120 0 0 1 240 0" stroke="#e63946"/>
+          <path d="M92 240 a98 98 0 0 1 196 0" stroke="#f08a2b"/>
+          <path d="M114 240 a76 76 0 0 1 152 0" stroke="#f6c244"/>
+          <path d="M136 240 a54 54 0 0 1 108 0" stroke="#7cc36a"/>
+        </g>
+        <!-- little house -->
+        <rect x="150" y="232" width="80" height="58" rx="6" fill="#fff"/>
+        <path d="M144 234 L190 198 L236 234 Z" fill="#e63946"/>
+        <rect x="178" y="254" width="24" height="36" rx="4" fill="#f08a2b"/>
+        <circle cx="196" cy="272" r="2.6" fill="#fff"/>
+        <!-- heart -->
+        <path d="M190 150 c-10 -16 -34 -6 -34 12 c0 14 22 26 34 34 c12 -8 34 -20 34 -34 c0 -18 -24 -28 -34 -12z" fill="#e63946"/>
+      </svg>
+    </div>
     <div class="reveal">
       <span class="sec-tag">The Junior Junction Difference</span>
       <h2 class="sec-title">A safe, caring second home</h2>
@@ -444,13 +521,16 @@
       <h2 class="sec-title">Moments of joy, every single day</h2>
     </div>
     <div class="gal-grid reveal">
-      <div class="gal">🎨</div>
-      <div class="gal">⚽</div>
-      <div class="gal">🎵</div>
-      <div class="gal">📚</div>
-      <div class="gal">🧩</div>
-      <div class="gal">🌻</div>
+      <div class="gal"><span class="gal-em">🎨</span><span class="gal-cap">Art &amp; Craft</span></div>
+      <div class="gal"><span class="gal-em">⚽</span><span class="gal-cap">Outdoor Play</span></div>
+      <div class="gal"><span class="gal-em">🎵</span><span class="gal-cap">Music Time</span></div>
+      <div class="gal"><span class="gal-em">📚</span><span class="gal-cap">Story Time</span></div>
+      <div class="gal"><span class="gal-em">🧩</span><span class="gal-cap">Puzzles</span></div>
+      <div class="gal"><span class="gal-em">🌻</span><span class="gal-cap">Nature Walks</span></div>
     </div>
+    <p class="center" style="margin-top:18px;font-size:13px;color:var(--ink-soft);">
+      Real photos of our classrooms and activities coming soon.
+    </p>
   </div>
 </section>
 
