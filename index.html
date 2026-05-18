@@ -11,7 +11,7 @@
 <meta property="og:locale" content="en_IN" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root{
     --red:#e63946; --orange:#f08a2b; --yellow:#f6c244;
@@ -213,21 +213,40 @@
     grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
   .inq-box h2{font-size:clamp(26px,3.4vw,38px);color:var(--charcoal);}
   .inq-box p{color:var(--ink-soft);margin:12px 0 0;}
-  .form-card{background:#fff;border-radius:20px;padding:28px;
-    box-shadow:0 18px 40px -22px rgba(58,58,64,.35);}
-  form{display:flex;flex-direction:column;gap:13px;}
-  form label{font-weight:700;font-size:12.5px;color:var(--charcoal);
-    margin-bottom:-7px;letter-spacing:.01em;}
-  form input,form select,form textarea{font-family:var(--body);
-    border:1.5px solid #e7e2da;border-radius:10px;padding:10px 13px;
-    font-size:14.5px;background:#fff;color:var(--ink);
-    transition:border-color .15s, box-shadow .15s;}
-  form input:focus,form select:focus,form textarea:focus{
-    outline:none;border-color:var(--orange);
-    box-shadow:0 0 0 3px rgba(240,138,43,.14);}
-  form input::placeholder,form textarea::placeholder{color:#b6b2ab;}
-  form .btn{margin-top:8px;border-radius:10px;}
-  .form-note{font-size:12px;color:var(--ink-soft);}
+
+  /* clean white-card form — Inter font, crisp inputs */
+  .form-card{background:#fff;border-radius:14px;padding:30px;
+    border:1px solid #ececec;
+    box-shadow:0 10px 40px -16px rgba(0,0,0,.18);
+    font-family:'Inter',sans-serif;}
+  form{display:flex;flex-direction:column;gap:0;}
+  form label{display:block;font-family:'Inter',sans-serif;
+    font-weight:600;font-size:12.5px;color:#3a3a3c;margin-bottom:6px;}
+  .fld{margin-bottom:15px;}
+  .fld-row{display:flex;gap:10px;}
+  .fld-row .fld{flex:1;}
+  form input,form select,form textarea{width:100%;
+    font-family:'Inter',sans-serif;font-size:14px;color:#2c2c2e;
+    background:#fff;border:1px solid #d8d8d6;border-radius:8px;
+    padding:9px 12px;transition:border-color .15s, box-shadow .15s;}
+  form input:focus,form select:focus,form textarea:focus{outline:none;
+    border-color:var(--red);box-shadow:0 0 0 3px rgba(230,57,70,.12);}
+  form input::placeholder,form textarea::placeholder{color:#b3b3b1;}
+  /* segmented Mother / Father / Guardian */
+  .seg{display:flex;gap:6px;}
+  .seg button{flex:1;font-family:'Inter',sans-serif;font-size:13px;
+    font-weight:500;padding:9px 0;border-radius:8px;cursor:pointer;
+    border:1px solid #d8d8d6;background:#fff;color:#8a8a8a;
+    transition:all .14s;}
+  .seg button.on{background:#fdecec;border-color:var(--red);
+    color:#c0303b;font-weight:600;}
+  .form-divider{border-top:1px solid #eee;margin:2px 0 15px;}
+  form .submit{width:100%;background:var(--red);color:#fff;border:none;
+    border-radius:8px;padding:12px;font-size:14.5px;font-weight:600;
+    font-family:'Inter',sans-serif;cursor:pointer;margin-top:4px;
+    transition:background .15s;}
+  form .submit:hover{background:#d12f3c;}
+  .form-note{font-size:11.5px;color:#9a9a98;margin-top:9px;text-align:center;}
 
   /* ---------- footer ---------- */
   footer{background:var(--charcoal);color:#cfcdcb;padding:64px 0 26px;}
@@ -564,44 +583,70 @@
       </div>
       <div class="form-card">
       <form id="inqForm" onsubmit="return submitInquiry(event)">
-        <label for="rel">I am filling this form as</label>
-        <select id="rel">
-          <option value="Mother">Mother</option>
-          <option value="Father">Father</option>
-          <option value="Guardian">Guardian</option>
-        </select>
-        <label for="pn">Your Name</label>
-        <input id="pn" required placeholder="Your full name" />
-        <label for="ph">Mobile Number</label>
-        <input id="ph" required type="tel" placeholder="10-digit mobile" />
-        <label for="em">Email Address</label>
-        <input id="em" type="email" placeholder="you@email.com" />
-        <label for="cn">Child's Name</label>
-        <input id="cn" placeholder="Child's full name" />
-        <label for="dob">Child's Date of Birth</label>
-        <input id="dob" type="date" />
-        <label for="br">Preferred Branch</label>
-        <select id="br">
-          <option value="chandanagar">Chandanagar</option>
-          <option value="kondapur">Kondapur</option>
-        </select>
-        <label for="pg">Programme of Interest</label>
-        <select id="pg">
-          <option>Play Group</option>
-          <option>Nursery</option>
-          <option>LKG</option>
-          <option>UKG</option>
-          <option>Not sure yet</option>
-        </select>
-        <label for="msg">Message (optional)</label>
-        <textarea id="msg" rows="2" placeholder="Anything you'd like to ask"></textarea>
-        <label for="quiz" id="quizLabel">Quick check</label>
-        <input id="quiz" required type="number" inputmode="numeric"
-               placeholder="Type the answer" />
+        <div class="fld">
+          <label>I am filling this form as</label>
+          <div class="seg" id="relSeg">
+            <button type="button" class="on" data-rel="Mother" onclick="pickRel(this)">Mother</button>
+            <button type="button" data-rel="Father" onclick="pickRel(this)">Father</button>
+            <button type="button" data-rel="Guardian" onclick="pickRel(this)">Guardian</button>
+          </div>
+          <input type="hidden" id="rel" value="Mother" />
+        </div>
+        <div class="fld">
+          <label for="pn">Your Name</label>
+          <input id="pn" required placeholder="Your full name" />
+        </div>
+        <div class="fld-row">
+          <div class="fld">
+            <label for="ph">Mobile Number</label>
+            <input id="ph" required type="tel" placeholder="10-digit mobile" />
+          </div>
+          <div class="fld">
+            <label for="em">Email Address</label>
+            <input id="em" type="email" placeholder="you@email.com" />
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="fld">
+          <label for="cn">Child's Name</label>
+          <input id="cn" placeholder="Child's full name" />
+        </div>
+        <div class="fld">
+          <label for="dob">Child's Date of Birth</label>
+          <input id="dob" type="date" />
+        </div>
+        <div class="fld-row">
+          <div class="fld">
+            <label for="br">Preferred Branch</label>
+            <select id="br">
+              <option value="chandanagar">Chandanagar</option>
+              <option value="kondapur">Kondapur</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="pg">Programme</label>
+            <select id="pg">
+              <option>Play Group</option>
+              <option>Nursery</option>
+              <option>LKG</option>
+              <option>UKG</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="fld">
+          <label for="msg">Message (optional)</label>
+          <textarea id="msg" rows="2" placeholder="Anything you'd like to ask"></textarea>
+        </div>
+        <div class="fld">
+          <label for="quiz" id="quizLabel">Quick check</label>
+          <input id="quiz" required type="number" inputmode="numeric"
+                 placeholder="Type the answer" />
+        </div>
         <!-- honeypot: hidden from humans, bots fill it -->
         <input id="hp_field" name="hp_field" tabindex="-1" autocomplete="off"
                style="position:absolute;left:-9999px;width:1px;height:1px;" aria-hidden="true" />
-        <button type="submit" class="btn btn-primary" id="inqBtn">Send Enquiry</button>
+        <button type="submit" class="submit" id="inqBtn">Send Enquiry</button>
         <p class="form-note" id="inqNote">We'll get back to you within one working day.</p>
       </form>
       </div>
@@ -689,6 +734,13 @@
     if (q) q.value = "";
   }
   newQuiz();
+
+  // segmented Mother/Father/Guardian selector
+  function pickRel(btn){
+    document.querySelectorAll('#relSeg button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('rel').value = btn.dataset.rel;
+  }
 
   async function submitInquiry(e){
     e.preventDefault();
