@@ -558,12 +558,22 @@
         </div>
       </div>
       <form id="inqForm" onsubmit="return submitInquiry(event)">
-        <label for="pn">Parent's Name</label>
+        <label for="rel">I am filling this form as</label>
+        <select id="rel">
+          <option value="Mother">Mother</option>
+          <option value="Father">Father</option>
+          <option value="Guardian">Guardian</option>
+        </select>
+        <label for="pn">Your Name</label>
         <input id="pn" required placeholder="Your full name" />
         <label for="ph">Mobile Number</label>
         <input id="ph" required type="tel" placeholder="10-digit mobile" />
-        <label for="cn">Child's Name &amp; Age</label>
-        <input id="cn" placeholder="e.g. Aarav, 3 years" />
+        <label for="em">Email Address</label>
+        <input id="em" type="email" placeholder="you@email.com" />
+        <label for="cn">Child's Name</label>
+        <input id="cn" placeholder="Child's full name" />
+        <label for="dob">Child's Date of Birth</label>
+        <input id="dob" type="date" />
         <label for="br">Preferred Branch</label>
         <select id="br">
           <option value="chandanagar">Chandanagar</option>
@@ -701,9 +711,12 @@
     btn.textContent = "Sending…";
 
     const payload = {
+      relation:    document.getElementById('rel').value,
       parent_name: name,
       phone:       phone,
+      email:       document.getElementById('em').value.trim(),
       child:       document.getElementById('cn').value.trim(),
+      dob:         document.getElementById('dob').value,
       branch:      document.getElementById('br').value,
       programme:   document.getElementById('pg').value,
       message:     document.getElementById('msg').value.trim(),
