@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Junior Junction International Pre School — Hyderabad</title>
+<meta name="description" content="Junior Junction International Pre School, Hyderabad — a warm, nurturing preschool where every child is known, loved and gently guided." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --red:#e63946; --terracotta:#c8674e; --sand:#e9dcc9;
+    --cream:#faf6f0; --paper:#fffdf9; --deep:#2f2a26; --soft:#7a726a;
+    --serif:'Fraunces', serif;
+    --sans:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--deep);background:var(--cream);
+    line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.2;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);}
+
+  /* ---------- nav ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(250,246,240,.9);
+    backdrop-filter:blur(12px);border-bottom:1px solid #ede3d4;}
+  nav{display:flex;align-items:center;justify-content:space-between;
+    height:84px;}
+  .brand{display:flex;align-items:center;gap:13px;}
+  .brand img{height:50px;width:auto;}
+  .brand .bt{font-family:var(--serif);font-size:13px;color:var(--deep);
+    border-left:1px solid #d9cdb9;padding-left:13px;line-height:1.3;}
+  .navlinks{display:flex;gap:36px;align-items:center;}
+  .navlinks a{font-size:14.5px;color:var(--deep);position:relative;
+    padding:3px 0;}
+  .navlinks a:hover{color:var(--terracotta);}
+  .nav-cta{font-family:var(--sans);font-size:13.5px;font-weight:500;
+    border:1px solid var(--deep);border-radius:999px;padding:11px 24px;
+    transition:background .2s,color .2s;}
+  .nav-cta:hover{background:var(--deep);color:var(--cream);}
+  .navtoggle{display:none;background:none;border:none;font-size:25px;
+    cursor:pointer;color:var(--deep);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 104px;position:relative;}
+  .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;
+    align-items:center;}
+  .hero h1{font-size:clamp(42px,5.6vw,68px);color:var(--deep);
+    letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--terracotta);}
+  .hero .lead{font-size:18px;color:var(--soft);margin:26px 0 34px;
+    max-width:440px;}
+  .hero-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn-solid{font-family:var(--sans);font-size:14.5px;font-weight:500;
+    background:var(--terracotta);color:#fff;border:none;border-radius:999px;
+    padding:15px 30px;cursor:pointer;transition:background .2s;}
+  .btn-solid:hover{background:#b1593f;}
+  .btn-text{font-size:14.5px;font-weight:500;color:var(--deep);
+    border-bottom:1px solid var(--deep);padding-bottom:2px;}
+  .hero-art{position:relative;}
+  .hero-frame{border-radius:200px 200px 24px 24px;overflow:hidden;
+    aspect-ratio:4/5;
+    background:
+      radial-gradient(circle at 50% 32%, #f4d9c4 0%, transparent 60%),
+      linear-gradient(160deg,#efe1cf,#e3cdb6);
+    display:flex;align-items:flex-end;justify-content:center;}
+  .hero-frame svg{width:92%;height:auto;}
+  .hero-tag{position:absolute;background:var(--paper);border-radius:16px;
+    padding:14px 18px;box-shadow:0 18px 36px -20px rgba(47,42,38,.4);
+    font-size:13px;}
+  .hero-tag b{font-family:var(--serif);font-size:22px;color:var(--terracotta);
+    display:block;font-weight:600;}
+  .hero-tag.t1{bottom:48px;left:-30px;}
+  .hero-tag.t2{top:54px;right:-24px;}
+  .hero-dot{position:absolute;border-radius:50%;}
+
+  /* ---------- trust line ---------- */
+  .trust{border-top:1px solid #ede3d4;border-bottom:1px solid #ede3d4;
+    background:var(--paper);}
+  .trust .wrap{display:flex;justify-content:space-between;gap:30px;
+    padding:34px 32px;flex-wrap:wrap;}
+  .trust .ti{text-align:center;flex:1;min-width:140px;}
+  .trust .ti b{font-family:var(--serif);font-size:34px;color:var(--terracotta);
+    font-weight:600;display:block;}
+  .trust .ti span{font-size:13px;color:var(--soft);letter-spacing:.02em;}
+
+  /* ---------- section ---------- */
+  .sec{padding:104px 0;}
+  .sec-head{max-width:600px;margin-bottom:56px;}
+  .sec-head.ctr{margin-left:auto;margin-right:auto;text-align:center;}
+  .sec-head h2{font-size:clamp(30px,3.8vw,46px);color:var(--deep);
+    margin:14px 0 0;}
+  .sec-head p{color:var(--soft);font-size:16.5px;margin-top:14px;}
+
+  /* ---------- philosophy / split ---------- */
+  .split .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;
+    align-items:center;}
+  .split-img{border-radius:24px;aspect-ratio:1/1;
+    background:
+      radial-gradient(circle at 30% 30%, #f4d9c4 0%, transparent 55%),
+      radial-gradient(circle at 75% 78%, #d8e4d2 0%, transparent 55%),
+      linear-gradient(150deg,#efe1cf,#e6d3bd);
+    display:flex;align-items:center;justify-content:center;}
+  .split-img svg{width:70%;height:auto;}
+  .vlist{margin-top:30px;display:flex;flex-direction:column;gap:22px;}
+  .vitem{display:flex;gap:16px;}
+  .vitem .vn{font-family:var(--serif);font-size:20px;color:var(--terracotta);
+    font-weight:600;flex-shrink:0;width:40px;}
+  .vitem h3{font-size:19px;color:var(--deep);margin-bottom:3px;}
+  .vitem p{font-size:14.5px;color:var(--soft);}
+
+  /* ---------- programs ---------- */
+  .programs{background:var(--paper);}
+  .prog-list{display:flex;flex-direction:column;}
+  .prow{display:grid;grid-template-columns:auto 1fr auto auto;gap:30px;
+    align-items:center;padding:30px 8px;border-top:1px solid #ede3d4;
+    transition:background .2s;}
+  .prow:last-child{border-bottom:1px solid #ede3d4;}
+  .prow:hover{background:var(--cream);}
+  .prow .pn{font-family:var(--serif);font-size:30px;color:var(--sand);
+    font-weight:600;}
+  .prow:hover .pn{color:var(--terracotta);}
+  .prow h3{font-family:var(--serif);font-size:24px;color:var(--deep);}
+  .prow .pd{font-size:14px;color:var(--soft);max-width:340px;}
+  .prow .pa{font-size:13px;color:var(--terracotta);font-weight:600;
+    white-space:nowrap;}
+  .prow .parrow{font-size:20px;color:var(--sand);}
+  .prow:hover .parrow{color:var(--terracotta);}
+
+  /* ---------- quote ---------- */
+  .quote{background:var(--deep);color:var(--cream);}
+  .quote .wrap{text-align:center;max-width:860px;}
+  .quote blockquote{font-family:var(--serif);font-style:italic;
+    font-size:clamp(24px,3.2vw,36px);line-height:1.4;}
+  .quote .qby{margin-top:26px;font-size:14px;color:#b9af9f;
+    letter-spacing:.02em;}
+  .quote .qby b{display:block;font-style:normal;color:var(--cream);
+    font-family:var(--serif);font-size:17px;letter-spacing:0;}
+
+  /* ---------- gallery ---------- */
+  .gallery .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .gtile{border-radius:18px;aspect-ratio:1/1;display:flex;
+    align-items:center;justify-content:center;overflow:hidden;}
+  .gtile svg{width:54%;height:auto;}
+  .g1{background:linear-gradient(150deg,#f0ddc7,#e6cfae);}
+  .g2{background:linear-gradient(150deg,#e3d9c4,#d2e0cf);}
+  .g3{background:linear-gradient(150deg,#f3dcd0,#e9c7b4);}
+  .g4{background:linear-gradient(150deg,#e7ddd0,#dcccd4);}
+  .g5{background:linear-gradient(150deg,#efe2cd,#e8d3b5);}
+  .g6{background:linear-gradient(150deg,#dde3d4,#cdd9c4);}
+
+  /* ---------- cta band ---------- */
+  .band{background:var(--terracotta);color:#fff;text-align:center;}
+  .band .wrap{padding:88px 32px;}
+  .band h2{font-size:clamp(30px,4vw,46px);}
+  .band p{margin:14px auto 30px;max-width:480px;opacity:.92;}
+  .band .btn-solid{background:#fff;color:var(--terracotta);}
+  .band .btn-solid:hover{background:var(--cream);}
+
+  /* ---------- contact ---------- */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;
+    align-items:start;}
+  .cdetail{margin-top:26px;display:flex;flex-direction:column;gap:18px;}
+  .cdetail .cd{display:flex;gap:14px;align-items:flex-start;}
+  .cdetail .cd .ci{font-size:18px;}
+  .cdetail .cd b{font-family:var(--serif);font-size:15px;display:block;}
+  .cdetail .cd span{font-size:14px;color:var(--soft);}
+  .form-card{background:var(--paper);border:1px solid #ede3d4;
+    border-radius:18px;padding:30px;}
+  form{display:flex;flex-direction:column;}
+  .fld{margin-bottom:15px;}
+  .fld-row{display:flex;gap:12px;}
+  .fld-row .fld{flex:1;}
+  label{display:block;font-size:12px;font-weight:600;color:var(--deep);
+    margin-bottom:6px;letter-spacing:.02em;}
+  input,select,textarea{width:100%;font-family:var(--sans);font-size:14px;
+    color:var(--deep);background:#fff;border:1px solid #ddd1bf;
+    border-radius:9px;padding:10px 13px;transition:border-color .15s,box-shadow .15s;}
+  input:focus,select:focus,textarea:focus{outline:none;
+    border-color:var(--terracotta);box-shadow:0 0 0 3px rgba(200,103,78,.13);}
+  input::placeholder,textarea::placeholder{color:#bcb09e;}
+  .seg{display:flex;gap:7px;}
+  .seg button{flex:1;font-family:var(--sans);font-size:13px;font-weight:500;
+    padding:9px 0;border-radius:9px;cursor:pointer;border:1px solid #ddd1bf;
+    background:#fff;color:var(--soft);transition:all .15s;}
+  .seg button.on{background:#f6e7df;border-color:var(--terracotta);
+    color:var(--terracotta);font-weight:600;}
+  .submit{width:100%;background:var(--terracotta);color:#fff;border:none;
+    border-radius:9px;padding:13px;font-family:var(--sans);font-size:14.5px;
+    font-weight:500;cursor:pointer;margin-top:4px;transition:background .2s;}
+  .submit:hover{background:#b1593f;}
+  .fnote{font-size:11.5px;color:var(--soft);margin-top:9px;text-align:center;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--deep);color:#b9af9f;padding:72px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:48px;}
+  footer .fbrand{background:#fff;border-radius:12px;padding:12px 16px;
+    display:inline-flex;margin-bottom:18px;}
+  footer .fbrand img{height:46px;}
+  footer h4{font-family:var(--serif);color:var(--cream);font-size:17px;
+    margin-bottom:14px;font-weight:600;}
+  footer a{display:block;padding:5px 0;font-size:14px;}
+  footer a:hover{color:var(--cream);}
+  .fsoc{display:flex;gap:10px;margin-top:10px;}
+  .fsoc a{width:38px;height:38px;border-radius:50%;
+    border:1px solid #4a443d;display:flex;align-items:center;
+    justify-content:center;padding:0;font-size:15px;}
+  .fsoc a:hover{background:var(--terracotta);border-color:var(--terracotta);
+    color:#fff;}
+  .fbot{border-top:1px solid #4a443d;margin-top:48px;padding-top:24px;
+    text-align:center;font-size:12.5px;}
+
+  .reveal{opacity:0;transform:translateY(24px);
+    transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:880px){
+    .hero .wrap,.split .wrap,.contact .wrap{grid-template-columns:1fr;gap:44px;}
+    .gallery .grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .navlinks{position:fixed;inset:84px 0 auto 0;background:var(--cream);
+      flex-direction:column;padding:28px;gap:22px;display:none;
+      border-bottom:1px solid #ede3d4;}
+    .navlinks.open{display:flex;}
+    .navtoggle{display:block;}
+    .prow{grid-template-columns:auto 1fr;gap:16px;}
+    .prow .pd,.prow .parrow{display:none;}
+  }
+  @media(max-width:520px){
+    .gallery .grid{grid-template-columns:1fr;}
+    .sec{padding:72px 0;}
+    .fld-row{flex-direction:column;gap:0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand">
+        <img src="assets/jj-logo.png" alt="Junior Junction International Pre School" />
+        <span class="bt">International<br>Pre School</span>
+      </a>
+      <div class="navlinks" id="navlinks">
+        <a href="#philosophy">Our Approach</a>
+        <a href="#programs">Programs</a>
+        <a href="#gallery">Life Here</a>
+        <a href="#contact">Visit Us</a>
+        <a href="#contact" class="nav-cta">Book a Visit</a>
+      </div>
+      <button class="navtoggle" id="navtoggle" aria-label="Menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-dot" style="width:120px;height:120px;background:#efe1cf;top:60px;left:4%;opacity:.6;"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Hyderabad · Est. for little ones</span>
+      <h1>A gentle place to <em>begin</em> the journey</h1>
+      <p class="lead">At Junior Junction, every child is known by name, met with warmth, and guided with care — through their very first years of discovery.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-solid">Book a School Visit</a>
+        <a href="#philosophy" class="btn-text">Our approach</a>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <div class="hero-frame">
+        <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A child reading">
+          <ellipse cx="150" cy="320" rx="92" ry="14" fill="#2f2a26" opacity=".07"/>
+          <!-- child sitting reading -->
+          <path d="M96 320 q4 -70 54 -70 q50 0 54 70 z" fill="#c8674e"/>
+          <circle cx="150" cy="196" r="40" fill="#e8b98f"/>
+          <path d="M112 188 a40 40 0 0 1 80 0 q-40 -30 -80 0z" fill="#2f2a26"/>
+          <circle cx="138" cy="198" r="4" fill="#2f2a26"/>
+          <circle cx="162" cy="198" r="4" fill="#2f2a26"/>
+          <path d="M140 210 q10 9 20 0" stroke="#2f2a26" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- book -->
+          <path d="M108 286 l42 -12 l42 12 l0 30 l-42 -10 l-42 10 z" fill="#faf6f0" stroke="#2f2a26" stroke-width="2"/>
+          <line x1="150" y1="276" x2="150" y2="306" stroke="#2f2a26" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="hero-tag t1">
+        <b>Small</b><span>group sizes</span>
+      </div>
+      <div class="hero-tag t2">
+        <b>Warm</b><span>caring teachers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap">
+    <div class="ti"><b>10+</b><span>Years nurturing children</span></div>
+    <div class="ti"><b>2</b><span>Branches across Hyderabad</span></div>
+    <div class="ti"><b>4</b><span>Thoughtful age-wise programs</span></div>
+    <div class="ti"><b>100%</b><span>Care, every single day</span></div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="sec split" id="philosophy">
+  <div class="wrap">
+    <div class="split-img reveal">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A nurturing hand and heart">
+        <path d="M120 174 c-22 -30 -64 -16 -64 18 c0 -2 0 0 0 0 c0 26 42 46 64 60 c22 -14 64 -34 64 -60 c0 -34 -42 -48 -64 -18z" fill="#c8674e"/>
+        <circle cx="120" cy="92" r="34" fill="#e8b98f"/>
+        <path d="M120 58 a34 34 0 0 1 0 68" fill="#2f2a26" opacity=".12"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Our Approach</span>
+      <div class="sec-head" style="margin-bottom:0;">
+        <h2>Learning that feels like being cared for</h2>
+        <p>We believe the early years are about feeling safe, seen and curious — not pressure. Everything we do begins there.</p>
+      </div>
+      <div class="vlist">
+        <div class="vitem"><span class="vn">01</span>
+          <div><h3>Known by name</h3>
+            <p>Small groups mean every child gets real attention, every day.</p></div></div>
+        <div class="vitem"><span class="vn">02</span>
+          <div><h3>Learning through play</h3>
+            <p>Curiosity leads — children explore, build, imagine and discover.</p></div></div>
+        <div class="vitem"><span class="vn">03</span>
+          <div><h3>A calm, safe space</h3>
+            <p>Gentle routines and a secure, hygienic campus children feel at home in.</p></div></div>
+        <div class="vitem"><span class="vn">04</span>
+          <div><h3>Close to families</h3>
+            <p>We keep parents involved in every milestone and small moment.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="sec programs" id="programs">
+  <div class="wrap">
+    <div class="sec-head ctr reveal">
+      <span class="eyebrow">Programs</span>
+      <h2>A gentle path, year by year</h2>
+    </div>
+    <div class="prog-list reveal">
+      <div class="prow">
+        <span class="pn">01</span>
+        <div><h3>Play Group</h3></div>
+        <span class="pd">A soft first step into songs, friends and sensory play.</span>
+        <span class="pa">1.5 – 2.5 yrs</span>
+      </div>
+      <div class="prow">
+        <span class="pn">02</span>
+        <div><h3>Nursery</h3></div>
+        <span class="pd">Building language, motor skills and early confidence.</span>
+        <span class="pa">2.5 – 3.5 yrs</span>
+      </div>
+      <div class="prow">
+        <span class="pn">03</span>
+        <div><h3>LKG</h3></div>
+        <span class="pd">Early literacy and numbers through stories and discovery.</span>
+        <span class="pa">3.5 – 4.5 yrs</span>
+      </div>
+      <div class="prow">
+        <span class="pn">04</span>
+        <div><h3>UKG</h3></div>
+        <span class="pd">School-readiness — reading, writing and confident thinking.</span>
+        <span class="pa">4.5 – 5.5 yrs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="sec quote">
+  <div class="wrap reveal">
+    <blockquote>“She runs in happy every morning and comes home full of stories. Junior Junction feels like a second home for our daughter.”</blockquote>
+    <div class="qby"><b>A Junior Junction Parent</b>Kondapur, Hyderabad</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head ctr reveal">
+      <span class="eyebrow">Life Here</span>
+      <h2>Small moments, every day</h2>
+    </div>
+    <div class="grid reveal">
+      <div class="gtile g1"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="42" r="22" fill="#c8674e"/><rect x="38" y="58" width="24" height="30" rx="10" fill="#2f2a26" opacity=".7"/></svg></div>
+      <div class="gtile g2"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="46" width="40" height="28" rx="4" fill="#faf6f0"/><path d="M30 46 L50 30 L70 46 Z" fill="#c8674e"/></svg></div>
+      <div class="gtile g3"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="26" fill="none" stroke="#c8674e" stroke-width="8"/><circle cx="50" cy="50" r="8" fill="#c8674e"/></svg></div>
+      <div class="gtile g4"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 26 L58 44 L78 44 L62 56 L68 76 L50 64 L32 76 L38 56 L22 44 L42 44 Z" fill="#c8674e"/></svg></div>
+      <div class="gtile g5"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="34" y="34" width="14" height="14" rx="3" fill="#c8674e"/><rect x="52" y="34" width="14" height="14" rx="3" fill="#2f2a26" opacity=".6"/><rect x="34" y="52" width="14" height="14" rx="3" fill="#2f2a26" opacity=".6"/><rect x="52" y="52" width="14" height="14" rx="3" fill="#c8674e"/></svg></div>
+      <div class="gtile g6"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 74 C30 60 30 38 44 34 C50 32 50 42 50 42 C50 42 50 32 56 34 C70 38 70 60 50 74 Z" fill="#c8674e"/></svg></div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--soft);">
+      Photographs of our classrooms and children — coming soon.
+    </p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="wrap reveal">
+    <h2>Come see Junior Junction for yourself</h2>
+    <p>The best way to know a school is to walk in. Book a visit — we would love to show you around.</p>
+    <a href="#contact" class="btn-solid">Book a School Visit</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Visit Us</span>
+      <div class="sec-head" style="margin-bottom:0;">
+        <h2>Send us an enquiry</h2>
+        <p>Tell us a little about your child and we'll be in touch within one working day.</p>
+      </div>
+      <div class="cdetail">
+        <div class="cd"><span class="ci">📞</span>
+          <div><b>Call us</b><span>8367 667 272</span></div></div>
+        <div class="cd"><span class="ci">📍</span>
+          <div><b>Branches</b><span>Chandanagar &amp; Kondapur, Hyderabad</span></div></div>
+        <div class="cd"><span class="ci">🕘</span>
+          <div><b>Visiting hours</b><span>Monday to Saturday, mornings</span></div></div>
+      </div>
+    </div>
+    <div class="form-card reveal">
+      <form id="inqForm" onsubmit="return submitInquiry(event)">
+        <div class="fld">
+          <label>I am filling this form as</label>
+          <div class="seg" id="relSeg">
+            <button type="button" class="on" data-rel="Mother" onclick="pickRel(this)">Mother</button>
+            <button type="button" data-rel="Father" onclick="pickRel(this)">Father</button>
+            <button type="button" data-rel="Guardian" onclick="pickRel(this)">Guardian</button>
+          </div>
+          <input type="hidden" id="rel" value="Mother" />
+        </div>
+        <div class="fld">
+          <label for="pn">Your Name</label>
+          <input id="pn" required placeholder="Your full name" />
+        </div>
+        <div class="fld-row">
+          <div class="fld"><label for="ph">Mobile Number</label>
+            <input id="ph" required type="tel" placeholder="10-digit mobile" /></div>
+          <div class="fld"><label for="em">Email Address</label>
+            <input id="em" type="email" placeholder="you@email.com" /></div>
+        </div>
+        <div class="fld">
+          <label for="cn">Child's Name</label>
+          <input id="cn" placeholder="Child's full name" />
+        </div>
+        <div class="fld">
+          <label for="dob">Child's Date of Birth</label>
+          <input id="dob" type="date" />
+        </div>
+        <div class="fld-row">
+          <div class="fld"><label for="br">Preferred Branch</label>
+            <select id="br">
+              <option value="chandanagar">Chandanagar</option>
+              <option value="kondapur">Kondapur</option>
+            </select></div>
+          <div class="fld"><label for="pg">Programme</label>
+            <select id="pg">
+              <option>Play Group</option><option>Nursery</option>
+              <option>LKG</option><option>UKG</option>
+              <option>Not sure yet</option>
+            </select></div>
+        </div>
+        <div class="fld">
+          <label for="msg">Message (optional)</label>
+          <textarea id="msg" rows="2" placeholder="Anything you'd like to ask"></textarea>
+        </div>
+        <div class="fld">
+          <label for="quiz" id="quizLabel">Quick check</label>
+          <input id="quiz" required type="number" inputmode="numeric" placeholder="Type the answer" />
+        </div>
+        <input id="hp_field" name="hp_field" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-9999px;width:1px;height:1px;" aria-hidden="true" />
+        <button type="submit" class="submit" id="inqBtn">Send Enquiry</button>
+        <p class="fnote" id="inqNote">Your enquiry goes straight to the Junior Junction team.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="fbrand">
+          <img src="assets/jj-logo.png" alt="Junior Junction International Pre School" />
+        </div>
+        <p style="font-size:14px;max-width:300px;">A warm, nurturing pre school in Hyderabad where every child is known, loved and gently guided.</p>
+        <div class="fsoc">
+          <a href="https://www.facebook.com/JuniorJunctionIndia" target="_blank" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/juniorjunctionindia/" target="_blank" aria-label="Instagram">◎</a>
+          <a href="https://www.youtube.com/@kondapurhyd489" target="_blank" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#philosophy">Our Approach</a>
+        <a href="#programs">Programs</a>
+        <a href="#gallery">Life Here</a>
+        <a href="#contact">Visit Us</a>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <a href="tel:8367667272">8367 667 272</a>
+        <a href="#contact">Chandanagar, Hyderabad</a>
+        <a href="#contact">Kondapur, Hyderabad</a>
+        <a href="https://app.juniorjunction.school" target="_blank">Staff Login</a>
+      </div>
+    </div>
+    <div class="fbot">
+      © 2026 Junior Junction International Pre School · Hyderabad
+    </div>
+  </div>
+</footer>
+
+<script>
+  const tg=document.getElementById('navtoggle');
+  const nl=document.getElementById('navlinks');
+  tg.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function pickRel(btn){
+    document.querySelectorAll('#relSeg button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('rel').value=btn.dataset.rel;
+  }
+
+  // math challenge
+  let quizA=0,quizB=0;
+  function newQuiz(){
+    quizA=Math.floor(Math.random()*5)+1;
+    quizB=Math.floor(Math.random()*5)+1;
+    const l=document.getElementById('quizLabel');
+    if(l) l.textContent=`Quick check — what is ${quizA} + ${quizB}?`;
+    const q=document.getElementById('quiz'); if(q) q.value="";
+  }
+  newQuiz();
+
+  const INQUIRY_ENDPOINT="https://ykluarnqjwteynosxngx.supabase.co/functions/v1/website-inquiry";
+
+  async function submitInquiry(e){
+    e.preventDefault();
+    const btn=document.getElementById('inqBtn');
+    const note=document.getElementById('inqNote');
+    note.style.color="";
+    const name=document.getElementById('pn').value.trim();
+    const phone=document.getElementById('ph').value.trim();
+    if(phone.replace(/\D/g,'').length<10){
+      note.textContent="Please enter a valid 10-digit mobile number.";
+      note.style.color="#c0303b"; return false;
+    }
+    const ans=parseInt(document.getElementById('quiz').value,10);
+    if(ans!==quizA+quizB){
+      note.textContent="The quick check answer isn't right — please try again.";
+      note.style.color="#c0303b"; newQuiz(); return false;
+    }
+    btn.disabled=true; btn.textContent="Sending…";
+    const payload={
+      relation:document.getElementById('rel').value,
+      parent_name:name, phone:phone,
+      email:document.getElementById('em').value.trim(),
+      child:document.getElementById('cn').value.trim(),
+      dob:document.getElementById('dob').value,
+      branch:document.getElementById('br').value,
+      programme:document.getElementById('pg').value,
+      message:document.getElementById('msg').value.trim(),
+      hp_field:document.getElementById('hp_field').value,
+      quiz_a:quizA, quiz_b:quizB, quiz_answer:ans
+    };
+    try{
+      const res=await fetch(INQUIRY_ENDPOINT,{
+        method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload)
+      });
+      const data=await res.json().catch(()=>({}));
+      btn.disabled=false; btn.textContent="Send Enquiry";
+      if(!res.ok||data.error){
+        note.textContent=data.error||"Sorry, something went wrong. Please call us on 8367 667 272.";
+        note.style.color="#c0303b"; newQuiz(); return false;
+      }
+      document.getElementById('inqForm').reset(); newQuiz();
+      note.textContent="Thank you, "+name+"! Your enquiry has reached the Junior Junction team.";
+    }catch(err){
+      console.error(err);
+      btn.disabled=false; btn.textContent="Send Enquiry";
+      note.textContent="Sorry, something went wrong. Please call us on 8367 667 272.";
+      note.style.color="#c0303b"; newQuiz();
+    }
+    return false;
+  }
+</script>
+</body>
+</html>
