@@ -1,0 +1,193 @@
+<!--
+================================================================
+  Junior Junction — Enquiry Form with Cloudflare Turnstile
+================================================================
+
+  Drop this into your marketing site (the OTHER repo). Replace
+  the two placeholders before going live:
+
+    1. YOUR_TURNSTILE_SITE_KEY — public key from Cloudflare dashboard
+       (NOT the secret key — that stays on the server)
+
+    2. YOUR_SUPABASE_PROJECT — change the fetch URL to your Supabase
+       project's edge function endpoint, e.g.
+       https://ykluarnqjwteynosxngx.supabase.co/functions/v1/website-inquiry
+
+  CSS is intentionally minimal — adjust to match your site's style.
+================================================================
+-->
+
+<!-- 1. Load the Turnstile script ONCE per page, ideally in <head> or near the form -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<!-- 2. The form -->
+<form id="jjEnquiryForm" class="enquiry-form" novalidate>
+  <div class="row">
+    <label>
+      Child's name *
+      <input name="student_name" type="text" required maxlength="80" />
+    </label>
+  </div>
+
+  <div class="row">
+    <label>
+      Parent's name
+      <input name="parent_name" type="text" maxlength="80" />
+    </label>
+    <label>
+      Phone *
+      <input name="phone" type="tel" required pattern="^\+?\d[\d\s-]{7,15}$" placeholder="+91 9876543210" />
+    </label>
+  </div>
+
+  <div class="row">
+    <label>
+      Email
+      <input name="email" type="email" maxlength="120" />
+    </label>
+    <label>
+      Grade interested in
+      <select name="grade">
+        <option value="">-- Select --</option>
+        <option>Toddler</option>
+        <option>Nursery</option>
+        <option>PP1</option>
+        <option>PP2</option>
+        <option>Grade 1</option>
+        <option>Grade 2</option>
+        <option>Grade 3</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="row">
+    <label>
+      Branch preference
+      <select name="branch">
+        <option value="">-- Any branch --</option>
+        <option>Chandanagar</option>
+        <option>Kondapur</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="row">
+    <label class="full">
+      Message
+      <textarea name="message" rows="3" maxlength="1000" placeholder="Tell us a little about your child..."></textarea>
+    </label>
+  </div>
+
+  <!-- 3. Turnstile widget — invisible "managed" mode by default -->
+  <div class="cf-turnstile"
+       data-sitekey="YOUR_TURNSTILE_SITE_KEY"
+       data-theme="light"></div>
+
+  <div class="row">
+    <button type="submit" id="jjEnquirySubmit">Send enquiry</button>
+  </div>
+
+  <div id="jjEnquiryMsg" class="msg" style="display:none;"></div>
+</form>
+
+<script>
+(function () {
+  var form   = document.getElementById('jjEnquiryForm');
+  var btn    = document.getElementById('jjEnquirySubmit');
+  var msgEl  = document.getElementById('jjEnquiryMsg');
+  if (!form) return;
+
+  // Update this to YOUR Supabase project URL.
+  var ENDPOINT = 'https://YOUR_SUPABASE_PROJECT.supabase.co/functions/v1/website-inquiry';
+
+  function showMsg(text, isError) {
+    msgEl.style.display = 'block';
+    msgEl.textContent   = text;
+    msgEl.className     = 'msg ' + (isError ? 'msg-err' : 'msg-ok');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msgEl.style.display = 'none';
+
+    // Grab the Turnstile token. Cloudflare injects a hidden input named
+    // "cf-turnstile-response" once the widget completes (usually instant in
+    // managed mode for real users).
+    var tokenInput = form.querySelector('[name="cf-turnstile-response"]');
+    var token = tokenInput && tokenInput.value;
+    if (!token) {
+      showMsg('Please wait a moment for the security check to complete, then try again.', true);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var fd = new FormData(form);
+    var payload = {
+      student_name: (fd.get('student_name') || '').toString().trim(),
+      parent_name:  (fd.get('parent_name')  || '').toString().trim(),
+      phone:        (fd.get('phone')        || '').toString().trim(),
+      email:        (fd.get('email')        || '').toString().trim(),
+      grade:        (fd.get('grade')        || '').toString().trim(),
+      branch:       (fd.get('branch')       || '').toString().trim(),
+      message:      (fd.get('message')      || '').toString().trim(),
+      turnstile_token: token,
+    };
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+      .then(function (res) {
+        if (!res.ok) {
+          showMsg(res.body.error || 'Could not send your enquiry. Please try again.', true);
+          // Token is one-time-use — reset the widget for a retry.
+          if (window.turnstile) window.turnstile.reset();
+        } else {
+          showMsg("Thanks! We'll be in touch shortly.", false);
+          form.reset();
+          if (window.turnstile) window.turnstile.reset();
+        }
+      })
+      .catch(function (err) {
+        console.error(err);
+        showMsg('Network error. Please try again.', true);
+        if (window.turnstile) window.turnstile.reset();
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send enquiry';
+      });
+  });
+})();
+</script>
+
+<style>
+.enquiry-form { max-width: 560px; margin: 0 auto; }
+.enquiry-form .row { display: flex; gap: 12px; margin-bottom: 12px; }
+.enquiry-form .row > label { flex: 1; display: flex; flex-direction: column; font-size: 13px; color: #4a4030; }
+.enquiry-form label.full { flex: 1 1 100%; }
+.enquiry-form input, .enquiry-form select, .enquiry-form textarea {
+  padding: 8px 10px; border: 1px solid #d8cfb8; border-radius: 6px;
+  font-size: 14px; margin-top: 3px; font-family: inherit;
+}
+.enquiry-form input:focus, .enquiry-form select:focus, .enquiry-form textarea:focus {
+  outline: none; border-color: #c0392b;
+}
+.enquiry-form button {
+  background: #c0392b; color: #fff; border: 0; padding: 10px 22px;
+  border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.enquiry-form button:hover:not(:disabled) { background: #a02525; }
+.enquiry-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+.enquiry-form .msg { margin-top: 12px; padding: 10px 12px; border-radius: 6px; font-size: 13px; }
+.enquiry-form .msg-ok  { background: #e8f5e8; color: #2a6f2a; }
+.enquiry-form .msg-err { background: #fdecec; color: #a02525; }
+.cf-turnstile { margin: 8px 0; }
+@media (max-width: 560px) {
+  .enquiry-form .row { flex-direction: column; gap: 0; }
+}
+</style>
